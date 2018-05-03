@@ -7,7 +7,7 @@ let table = new Table({
 })
 
 const values = process.argv.slice(2)
-const crypto = values.length > 0 ? values : ['ETH', 'TRX', 'XVG']
+const crypto = values.length > 0 ? values : ['ETH', 'TRX']
 
 const options = {
   url: 'https://www.binance.com/exchange/public/product',
