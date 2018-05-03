@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const rp = require('request-promise')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -12,8 +13,6 @@ app.post('/', (req, res) => {
     url: 'https://www.binance.com/exchange/public/product',
     json: true
   }
-  const rp = require('request-promise')
-
   const crypto = req.body.crypto || []
 
   rp(options)
