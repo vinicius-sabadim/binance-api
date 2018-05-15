@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const rp = require('request-promise')
+const fetch = require('node-fetch')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -9,13 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.post('/', (req, res) => {
-  const options = {
-    url: 'https://www.binance.com/exchange/public/product',
-    json: true
-  }
   const crypto = req.body.crypto || []
 
-  rp(options)
+  fetch('https://www.binance.com/exchange/public/product')
+    .then((response) => response.json())
     .then((response) => {
       const values = response.data
         .filter((value) => value.quoteAsset === 'BTC')
